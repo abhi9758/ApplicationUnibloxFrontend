@@ -1,17 +1,64 @@
-<div>
-    <h2>Orders</h2>
-    <button (click)="checkout()">Checkout</button>
-    <ul>
-      <li *ngFor="let order of orders">
-        Items: {{ order.items.join(', ') }} | Total Amount: ${{ order.totalAmount }}
-        <div *ngIf="order.discountCode">
-          Discount Code: {{ order.discountCode }} | Discount Amount: ${{ order.discountAmount }}
-        </div>
-      </li>
-    </ul>
-    <h3>Discount Codes</h3>
-    <ul>
-      <li *ngFor="let code of discountCodes">{{ code }}</li>
-    </ul>
+<!-- order.component.html -->
+
+<div class="order-container">
+  <div class="order-header">
+    <h2>Your Orders <mat-icon>receipt</mat-icon></h2>
   </div>
-  
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons></mat-paginator>
+  <ul class="order-list">
+    <li *ngFor="let order of orders" class="order-item">
+      <mat-card>
+        <div class="order-details">
+          <div class="image-container">
+            <img mat-card-image [src]="getRandomImage()" alt="Random Image">
+          </div>
+          <div class="text-container">
+            <p><strong>Items:</strong> {{ order.items.join(', ') }}</p>
+            <p><strong>Total Amount:</strong> ${{ order.totalAmount }}</p>
+            <div *ngIf="order.discountCode">
+              <p><strong>Discount Code:</strong> {{ order.discountCode }}</p>
+              <p><strong>Discount Amount:</strong> ${{ order.discountAmount }}</p>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </li>
+  </ul>
+  <mat-paginator [length]="orders.length" [pageSize]="pageSize" (page)="onPageChange($event)"></mat-paginator>
+  <div *ngIf="!isOrdersNotEmpty()" class="empty-orders">
+    <p>No orders placed yet</p>
+  </div>
+  <button mat-raised-button color="primary" class="checkout-btn" (click)="checkout()">Checkout</button>
+</div> 
+<!-- order.component.html -->
+
+<!-- <div class="order-container">
+  <div class="order-header">
+    <h2>Your Orders <mat-icon>receipt</mat-icon></h2>
+  </div>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons></mat-paginator>
+  <ul class="order-list">
+    <li *ngFor="let order of pagedOrders" class="order-item">
+      <mat-card>
+        <div class="order-details">
+          <div class="image-container">
+            <img mat-card-image [src]="getRandomImage()" alt="Random Image">
+          </div>
+          <div class="text-container">
+            <p><strong>Items:</strong> {{ order.items.join(', ') }}</p>
+            <p><strong>Total Amount:</strong> ${{ order.totalAmount }}</p>
+            <div *ngIf="order.discountCode">
+              <p><strong>Discount Code:</strong> {{ order.discountCode }}</p>
+              <p><strong>Discount Amount:</strong> ${{ order.discountAmount }}</p>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </li>
+  </ul>
+  <mat-paginator [length]="orders.length" [pageSize]="pageSize" (page)="onPageChange($event)"></mat-paginator>
+  <div *ngIf="!isOrdersNotEmpty()" class="empty-orders">
+    <p>No orders placed yet</p>
+  </div>
+  <button mat-raised-button color="primary" class="checkout-btn" (click)="checkout()">Checkout</button>
+</div> -->

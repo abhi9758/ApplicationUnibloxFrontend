@@ -1,10 +1,26 @@
-<div>
-    <h2>Cart</h2>
-    <button (click)="addItemToCart()">Add Item to Cart</button>
-    <ul>
-      <li *ngFor="let item of cart | keyvalue">
-        {{ item.key }} - ${{ item.value }}
-      </li>
-    </ul>
+<div class="cart-container">
+  <div class="cart-header">
+    <h2 class="cart-heading">YOUR SHOPPING CART</h2>
   </div>
-  
+  <div class="item-center">
+    <mat-list-item *ngFor="let item of cart | keyvalue">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>{{ item.key }}</mat-card-title>
+            <mat-card-subtitle>Price: ₹{{ item.value }}</mat-card-subtitle>
+            <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+        </mat-card-content>
+      </mat-card>
+    </mat-list-item>
+  </div>
+  <div *ngIf="!isCartNotEmpty()" class="empty-cart">
+    <p>Your cart is empty</p>
+  </div>
+  <div class="add-to-cart-btn">
+    <button mat-raised-button color="primary" (click)="addItemToCart()">Add Item to Cart</button>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.heading {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.link {
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.container {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}

@@ -1,5 +1,8 @@
 <div>
-  <h1>Ecommerce application</h1>
-  <app-cart></app-cart>
-  <app-order></app-order>
+  <h1 class="heading">ECOMMERCE APPLICATION</h1>
+  <div class="container">
+    <a class="link" routerLink="/order" routerLinkActive="active"><button mat-raised-button>Orders</button></a>
+    <a class="link" routerLink="/cart"><button mat-raised-button>Cart</button></a>
+  </div>
+  <router-outlet></router-outlet>
 </div>
