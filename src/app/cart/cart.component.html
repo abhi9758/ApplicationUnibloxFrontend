@@ -1,0 +1,10 @@
+<div>
+    <h2>Cart</h2>
+    <button (click)="addItemToCart()">Add Item to Cart</button>
+    <ul>
+      <li *ngFor="let item of cart | keyvalue">
+        {{ item.key }} - ${{ item.value }}
+      </li>
+    </ul>
+  </div>
+  

@@ -1,0 +1,17 @@
+<div>
+    <h2>Orders</h2>
+    <button (click)="checkout()">Checkout</button>
+    <ul>
+      <li *ngFor="let order of orders">
+        Items: {{ order.items.join(', ') }} | Total Amount: ${{ order.totalAmount }}
+        <div *ngIf="order.discountCode">
+          Discount Code: {{ order.discountCode }} | Discount Amount: ${{ order.discountAmount }}
+        </div>
+      </li>
+    </ul>
+    <h3>Discount Codes</h3>
+    <ul>
+      <li *ngFor="let code of discountCodes">{{ code }}</li>
+    </ul>
+  </div>
+  
